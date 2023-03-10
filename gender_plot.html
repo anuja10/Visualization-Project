@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gender Plot</title>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+<style></style>
+</head>
+
+<body>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript"> </script>
+
+
+<div id="barchart">
+<script>
+var age_range_deaths = { "0-10": 0, "11-20": 1, "21-40":2,"41-60": 3, "61-80": 4, "above 80":5};
+var age_range_percentage = { "0-10": 0.28, "11-20": 0.25, "21-40": 0.30,"41-60": 0.13, "61-80": 0.5, "above 80": 0.1};
+var age_sex_deaths = [];
+var female_deaths = 0,
+male_deaths=0,
+total_deaths = 0,
+age_count = [];
+var gender_plot=[{male:0,female:0,label:"0-10"},{male:0,female:0,label:"11-20"},{male:0,female:0,label:"21-40"},{male:0,female:0,label:"41-60"},{male:0,female:0,label:"61-80"},{male:0,female:0,label:">80"}];
+
+var 	child_deaths=0;
+d3.csv("deaths_age_sex.csv",function(error,d){
+
+				if (error) { //If error is not null, something went wrong.
+				console.log(error); //Log the error.
+				} else { //If no error, the file loaded correctly. Yay!
+				console.log(d); //Log the data.
+				}
+				// assign pumps data
+				for (var i=0; i<d.length; i++)
+				{
+
+					var record = d[i];
+					var object = {
+						age: record.age,
+						gender: record.gender
+					}
+
+					age_sex_deaths.push(object);
+				}
+				for (var j=0; j<age_sex_deaths.length; j++)
+				{
+				if(age_sex_deaths[j].gender ==0){
+				male_deaths++;
+				if(age_sex_deaths[j].age == 1){ gender_plot[1].male++;}
+				else if(age_sex_deaths[j].age == 2){ gender_plot[2].male++;}
+				else if(age_sex_deaths[j].age == 3){ gender_plot[3].male++;}
+				else if(age_sex_deaths[j].age == 4){ gender_plot[4].male++;}
+				else if(age_sex_deaths[j].age == 5){ gender_plot[5].male++;}
+				else if(age_sex_deaths[j].age == 0){ gender_plot[0].male++;}
+				}
+				else {
+				female_deaths++;
+				if(age_sex_deaths[j].age == 1){ gender_plot[1].female++;}
+				else if(age_sex_deaths[j].age == 2){ gender_plot[2].female++;}
+				else if(age_sex_deaths[j].age == 3){ gender_plot[3].female++;}
+				else if(age_sex_deaths[j].age == 4){ gender_plot[4].female++;}
+				else if(age_sex_deaths[j].age == 5){gender_plot[5].female++;}
+				else if(age_sex_deaths[j].age == 0){ gender_plot[0].female++;}
+				}
+				}
+
+console.log(gender_plot[0].female, gender_plot[1].female, gender_plot[2].female, gender_plot[3].female, gender_plot[4].female, gender_plot[5].female)
+console.log(gender_plot[0].male, gender_plot[1].male, gender_plot[2].male, gender_plot[3].male, gender_plot[4].male, gender_plot[5].male)
+var trace1 = {
+  x: ['0-10', '11-20', '21-40', '41-60', '61-80', '>80'] ,
+  y:  [gender_plot[0].male, gender_plot[1].male, gender_plot[2].male, gender_plot[3].male, gender_plot[4].male, gender_plot[5].male] ,
+  name: 'Males',
+  marker: {color: '#0300d1'},
+  type: 'bar'
+};
+
+var trace2 = {
+   x: ['0-10', '11-20', '21-40', '41-60', '61-80', '>80'] ,
+   y:  [gender_plot[0].female, gender_plot[1].female, gender_plot[2].female, gender_plot[3].female, gender_plot[4].female, gender_plot[5].female] ,
+  name: 'Females',
+  marker: {color: '#e202bc'},
+  type: 'bar'
+};
+
+
+var data = [trace1, trace2];
+
+
+var layout = {barmode: 'group'};
+var layout = {
+  // title: '___Distribution of Deaths by Age and Gender___',
+font: "Times New Roman",
+
+  xaxis: {tickfont: {
+      size: 14,
+      color: '#636363'
+    }},
+  xaxis: {
+    title: 'Age Group',
+    titlefont: {
+    	font: "Times New Roman",
+
+      size: 16,
+      color: '#636363'
+    },
+    tickfont: {
+      size: 14,
+      color: "#636363"
+    }
+  },
+   yaxis: {
+    title: 'Number of Deaths',
+    titlefont: {
+      	font: "Times New Roman",
+
+      size: 16,
+      color: '#636363'
+    },
+    tickfont: {
+      size: 14,
+      color: "#636363"
+    }
+  },
+
+  barmode: 'group',
+  bargap: 0.25,
+  bargroupgap: 0.05
+};
+
+
+Plotly.newPlot('barchart', data, layout);
+
+
+				});//end of function
+
+
+</script>
+</div>
+</body>
+</html>
