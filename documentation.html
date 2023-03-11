@@ -43,11 +43,51 @@
 <!--			border: 1px solid #ccc;-->
 <!--		}-->
 <!--	</style>-->
+	<style>
+		body {
+		    min-height: 80vh;
+		    max-width: 1700px;
+		    margin: 0 auto;
+		}
+		#index {
+			float: left;
+			width: 13%;
+			background-color: #f2f2f2;
+			height: 260vh;
+			padding: 15px;
+		}
+		#content {
+			float: left;
+			width: 80%;
+			height: 80vh;
+			padding: 10px;
+			box-sizing: border-box;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		
+		#content div {
+			width: 100%;
+			height: 100%;
+			padding: 20px;
+			box-sizing: border-box;
+			border: 0px solid #ccc;
+		}
+		h3 {
+		    text-align: left;
+			font-weight: bold;
+			color: #5387bd;
+		}
+
+		p {
+			color: black;
+		}
+	</style>
 </head>
 <body>
 	<header>
 		<h1>London's 1854 Cholera Epidemic Interactive Visualization</h1>
-		<h2>Dr. John Snow's Recreation</h2>
+		<h3 style="text-align: center;">Dr. John Snow's Recreation</h3>
 	</header>
 	
 	<div id="index">
@@ -61,18 +101,39 @@
 	<div id="content">
 		<div><h3>Introduction</h3>
 			<p>
-				Cholera epidemic map by Dr. John Snow is a visual representation of London's 1854 cholera cases. The objective of this project is to create an interactive version of Dr. John Snow's cholera epidemic map in London from 1854, which should be achieved using D3, HTML, CSS and JS. Interactive graphics is used to explain the map, which can be benefical in identifying the root causes of issues. The dataset consists of four files providing the coordinates of streets and pumps where daily deaths occured, including attributes such as age and gender.
+				Cholera epidemic map by Dr. John Snow is a visual representation of London's 1854 cholera cases. The objective of this project is to recreate an interactive version of Dr. John Snow's cholera epidemic map in London from 1854, which should be achieved using D3, HTML, CSS and JS. Interactive graphics is used to explain the map, which can be benefical in identifying the root causes of issues. The dataset consists of four files providing the coordinates of streets and pumps where daily deaths occured, including attributes such as age and gender.
 			</p>
-			<b>Following are the details:</b>	
-			<ol>
-				<li>cases</li>
-				<li>cases</li>
-			</ol>
-			<b>References</b>
+			<h3>Design Process:</h3>	
 			<ul>
-				<li>cases</li>
-				<li>cases</li>
+				<li>Initially design the page layout, figuring out which graph can fit better in the specific section. Then created a navigation bar to add documentation and youtube video links. With the help of this structure created the base page [12], [13].</li>
+				<img src="design.png" alt="Trulli" width="400" height="300">
+
+				<li>First major aim was to visualize the given data in the form charts/graphs. Used a pie chart to show distribution of deaths age group wise, simply conveterd to a donut shape by adding inner circle. As the data was available in percentage form it was best to show that using a pie chart. (issue noticed, the given data does not add up to 100%) Used a color code category and also specified the legends [1], [2], [9].</li>
+				<img src="pie.png" alt="Trulli" width="400" height="300">
+
+				<li>To show number of deaths in each age group as well as the male-female death distribution used a bar chart, where females are represented in pink and males are represented in blue. Results shows that the highest deaths observed are in youngest (0-10 yrs) and oldest (80+ yrs) age groups [5], [6], [7].</li>
+				<img src="bar.png" alt="Trulli" width="400" height="300">
+
+				<li>Given the London's street details, a soho map of cholera epidemic deaths is plotted which shows the male-female death distribution across the city, also shows location of pumps, brewery and warehouse with different color codes [8]. The dashboard also shows an interactive timeline graph of cholera epidemic deaths from August to September 1854. By selecting the timeframe window you can see the number of deaths on the map. We see there is a peak in the month of september, which is 143 deaths noted highest of the day. On the map along with male-female deaths, pumps, brewery and warehouse is also highlighted. There is also a zoom in and zoom out feature on the map to see the locations closely.</li>
+				<img src="map.png" alt="Trulli" width="800" height="400">
 			</ul>
+			<h3>References</h3>
+			<ol>
+				<li><a href="https://stackoverflow.com/questions/32422325/d3-scale-category20-is-too-smart-for-me">https://stackoverflow.com/questions/32422325/d3-scale-category20-is-too-smart-for-me</a></li>
+				<li><a href="https://gist.github.com/cnaithani/1ceda79527a698950d60628ed935d745">https://gist.github.com/cnaithani/1ceda79527a698950d60628ed935d745</a></li>
+				<li><a href="https://d3-graph-gallery.com/">https://d3-graph-gallery.com/</a></li>
+				<li><a href="https://www.w3schools.com/">https://www.w3schools.com/</a></li>
+				<li>Book: Interactive Data Visualization for the Web, by Scott Murray.</li>
+				<li>Book: Visualization, Analysis and Design, by Tamara Munzner.</li>
+				<li><a href="https://www.youtube.com/watch?v=Hq4c8-Bmj7s">https://www.youtube.com/watch?v=Hq4c8-Bmj7s</a></li>
+				<li><a href="https://ralucanicola.github.io/cholera-map-3D/">https://ralucanicola.github.io/cholera-map-3D/</a></li>
+				<li><a href="https://codepen.io/Arunabh_28/pen/awoemj">https://codepen.io/Arunabh_28/pen/awoemj</a></li>
+				<li><a href="https://d3-graph-gallery.com/graph/interactivity_tooltip.html">https://d3-graph-gallery.com/graph/interactivity_tooltip.html</a></li>
+				<li><a href="https://www.color-hex.com/">https://www.color-hex.com/</a></li>
+				<li><a href="https://www.w3schools.com/html/html_layout.asp">https://www.w3schools.com/html/html_layout.asp</a></li>
+				<li><a href="https://www.w3schools.com/css/css3_buttons.asp">https://www.w3schools.com/css/css3_buttons.asp</a></li>
+
+			</ol>
 		</div>
 	</div>
 </body>
