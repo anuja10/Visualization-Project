@@ -71,7 +71,7 @@ var div1 = d3.select("body").append("div")
     			.attr("id","workhouse")
     			.enter()
     			.append('rect')
-    			.style('fill', '#19484d')
+    			.style('fill', '#f6b600') 
     			.style('stroke', '#004d4d')
     			.attr('x', function(d) { return d.x*scale_factor ; })
     			.attr('y', function(d) { return d.y*scale_factor  ; })
@@ -139,8 +139,8 @@ var div1 = d3.select("body").append("div")
     			.data(brewery)
     			.enter()
     			.append('circle')
-    			.style('fill', 'yellow')
-    			.style('stroke', 'yellow')
+    			.style('fill', '#f44336')
+    			.style('stroke', '#f44336')
     			.attr('r', 12.8)
     			.attr('cx', function(d) { return d.x*scale_factor ; })
     			.attr('cy', function(d) { return d.y*scale_factor  ; })
@@ -215,9 +215,9 @@ var div1 = d3.select("body").append("div")
     			.data(pumps)
     			.enter()
     			.append('circle')
-    			.style('fill', '#3ed100')
+    			.style('fill', '#8fce00')
     			.style('stroke', 'black')
-    			.attr('r', 5.5)
+    			.attr('r', 4.5)
     			.attr('cx', function(d) { return d.x*scale_factor ; })
     			.attr('cy', function(d) { return d.y*scale_factor  ; })
     			.on("mouseover", function(d,i) {
@@ -365,14 +365,7 @@ var deaths_to_show = [];
 
 
 			}
-			/**
-			draw_genderplot(){
 
-
-
-			}
-
-			**/
 			/// extract data from csv file ///
 			d3.csv("deaths_age_sex.csv",function(error,d){
 
@@ -510,7 +503,8 @@ var sum =0;
     timeline.selectAll("dot")
         .data(deathdays)
   		.enter().append("circle")
-        .attr("r", 4.5)
+        .attr("r", 3.5)
+        .attr("stroke", "#c90076")
         .attr("cx", function(d) { return xScale(d.date); })
         .attr("cy", function(d) { return yScale(d.deaths); })
         .on("mouseover", function(d,i) {
@@ -518,7 +512,7 @@ var sum =0;
             div.transition()
                 .duration(200)
                 .style("opacity", .9);
-            div	.html(formatTime(d.date) + "<br/> <b>Deaths:</b>"  + d.deaths +  "<br/> <b>Total Deaths:</b>" +total_deaths[i] )
+            div	.html(formatTime(d.date) + "<br/><b>Deaths:</b>" + d.deaths +  "<br/> <b>Total Deaths:</b>" +total_deaths[i] )
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -594,341 +588,4 @@ var sum =0;
 
 
 });
-
-/***************************** Gender Plot ********************/
-
-
-
-
-
-
-
-/**
-var barchart = d3.select("body")
-  		  .append("svg")
-		    .attr("id","barchart")
-    	    .attr("width", width + padding.left*2 + padding.right)
-        	.attr("height", height + padding.top + padding.bottom)
-        	.append("g")
-  			.attr("transform",
-              "translate(" + padding.left*1.5 + "," + padding.top + ")");
-              var y1Scale = d3.scale.linear().range([height, 0]);
-
-
-
-
-
-var n = 6,
-m = [ "0-10", "11-20", "21-40","41-60", "61-80", "above 80"];
-
-
-
-
-var x0 = d3.scale.ordinal()
-    .domain(d3.range(n))
-    .rangeBands([0, width], .2);
-
-var x1 = d3.scale.ordinal()
-    .domain(d3.range(m))
-    .rangeBands([0, x0.rangeBand()]);
-
-//var x1Scale = d3.scale.linear().range([0, width]);
-var y1Scale = d3.scale.linear().range([height, 0]);
-y1Scale.domain([0, d3.max(deaths, function(d) { return d.deaths; })]);
-
-
-
-
-/**
-var gender_age_deaths = [{male:0,female:0,label:"0-10"},{male:0,female:0,label:"11-20"},{male:0,female:0,label:"21-40"},{male:0,female:0,label:"41-60"},{male:0,female:0,label:"61-80"},{male:0,female:0,label:">80"}];
-
-    for(var i=0;i<deaths_age_sex.length;i++)
-    {
-                          console.log("last array",deaths_age_sex[i].age);
-                            if(deaths_age_sex[i].age==0){
-                                if(deaths_age_sex[i].gender==0){
-                                    gender_age_deaths[0].male++;
-                                }else{
-                                    gender_age_deaths[0].female++;
-                                }
-                            }else if(deaths_age_sex[i].age==1){
-                                if(deaths_age_sex[i].gender==0){
-                                    gender_age_deaths[1].male++;
-                                }else{
-                                    gender_age_deaths[1].female++;
-                                }
-                            }if(deaths_age_sex[i].age==2){
-                                if(deaths_age_sex[i].gender==0){
-                                    gender_age_deaths[2].male++;
-                                }else{
-                                    gender_age_deaths[2].female++;
-                                }
-                            }if(deaths_age_sex[i].age==3){
-                                if(deaths_age_sex[i].gender==0){
-                                    gender_age_deaths[3].male++;
-                                }else{
-                                    gender_age_deaths[3].female++;
-                                }
-                            }if(deaths_age_sex[i].age==4){
-                                if(deaths_age_sex[i].gender==0){
-                                    gender_age_deaths[4].male++;
-                                }else{
-                                    gender_age_deaths[4].female++;
-                                }
-                            }if(deaths_age_sex[i].age==5){
-                                if(deaths_age_sex[i].gender==0){
-                                    gender_age_deaths[5].male++;
-                                }else{
-                                    gender_age_deaths[5].female++;
-                                }
-                            }
-                        }
-                        console.log("gender_age_deaths",gender_age_deaths);
-
-                        **/
-
-//x1Scale.domain(d3.extent(age_group, function(d) { return d; }));
-/**
-var male0=0, male1=0, male2=0, male3=0, male4=0, male5=0,
- female0=0, female1=0, female2=0,female3=0, female4=0,female5=0;
-var valueKeys = ['Male', 'Female'];
-console.log(age_group);
-
-
-for (i=0; i<deaths.length; i++){
-
-	if(deaths[i].age == 0 && deaths[i].gender == 0){
-	male0++;}
-
-	else if(deaths[i].age == 1 && deaths[i].gender == 0){
-		male1+=1;}
-	else if(deaths[i].age == 2 && deaths[i].gender == 0){
-		male2++;}
-	else if(deaths[i].age == 3 && deaths[i].gender == 0){
-		male3++;}
-	else if(deaths[i].age == 4 && deaths[i].gender == 0){
-		male4++;}
-	else if(deaths[i].age == 5 && deaths[i].gender == 0){
-		male5++;}
-
-	else if(deaths[i].age == 0 && deaths[i].gender == 1 ){
-		female0++;}
-	else if(deaths[i].age == 1 && deaths[i].gender == 1){
-		female1++;}
-	else if(deaths[i].age == 2 && deaths[i].gender == 1){
-		female2++;}
-	else if(deaths[i].age == 3 && deaths[i].gender == 1){
-		female3++;}
-	else if(deaths[i].age == 4 && deaths[i].gender == 1){
-		female4++;}
-	else if(deaths[i].age == 5 && deaths[i].gender == 1){
-		female5++;}
-
-}//end for loop
-
-
-var x1Axis = d3.svg.axis().scale(x0)
-		    .orient("bottom");
-
-var y1Axis = d3.svg.axis().scale(y1Scale)
-		    .orient("left").ticks(20);
-var males=0, females =0;
-
-
-for (j=0; j<= death_gender.length; j++)
-{
-	if(death_gender[j] == "Female"){
-	females++; }
-	else
-	{males++;}
-
-}
-console.log("males",males, "females",females)
-
-
-			barchart.selectAll("rect")
-			   .data(death_gender)
-			   .enter()
-			   .append("rect")
-			   .attr("x", function(d, i) {
-			   		return i * (width / death_gender.length);
-			   })
-			   .attr("y", function(d) {
-			   		return height - (d * 4);
-			   })
-			   .attr("width", width / death_gender.length - 10)
-			   .attr("height", function(d) {
-			   		return d * 4;
-			   })
-			   .attr("fill", "teal");
-
-    // Add the barchart
-   /**
-    barchart.selectAll("g")
-        .data(deaths)
-  		.enter().append("g")
-        .style('fill', function(d){
-    				if (d.gender == 0)
-    				{
-    			 	return "#e202bc"
-    				 }
-    				else {
-    				 return "#0300d1"
-    				 }})
-    	.attr("transform", function(d, i) { return "translate(" + x1(i) + ",0)"; })
- 		 .selectAll("rect")
-	    .data(function(d) { return age_group; })
-	  	.enter().append("rect")
-    	.attr("width", x1.rangeBand())
-	    .attr("height", y1Scale)
-    	.attr("x", function(d, i) { return x0(i); })
-	    .attr("y", function(d) { return height - y(d); });
-
-
-
-
-  // Add the X Axis
-    barchart.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(x1Axis);
-
-    // title of timeline
-   barchart.append("text")
-	.attr("transform", "translate(" + (width/2) + ")")
-	.style("font", "16px times")
-    .style("text-anchor", "middle")
-    .text("___ Barchart of Female/Male Cholera Epidemic Deaths (1854)___");
-
-
-    //  label for  X axis
-  	barchart.append("text")
-	.attr("transform", "translate(" + (width/2) + " ," + (height + 40) + ")")
-	.style("font", "14px times")
-    .style("text-anchor", "middle")
-      .text("Age Groups");
-
-
-
-    // Add the Y Axis
-    barchart.append("g")
-        .attr("class", "y axis")
-        .call(y1Axis);
-
-    //  label for  Y axis
-    barchart.append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 0 - padding.left)
-      .attr("x",0 - (height / 2))
-      .attr("dy", "1em")
-      .style("font", "14px times")
-      .style("text-anchor", "middle")
-      .text("Number of Deaths");
-
-   **/
-
-/**
-
-var x0 = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .1);
-
-var x1 = d3.scale.ordinal();
-
-
-var y = d3.scale.linear()
-    .range([height, 0]);
-
-var x1Axis = d3.svg.axis()
-    .scale(x0)
-    .tickSize(0)
-    .orient("bottom");
-
-var y1Axis = d3.svg.axis()
-    .scale(y)
-    .orient("left");
-
-var color = d3.scale.ordinal()
-    .range(["#ca0020","#f4a582"]);
-
-//d3.json("data.json", function(error, data) {
-
-  //var categoriesNames = data.map(function(d) { return d.categorie; });
- // var rateNames = data[0].values.map(function(d) { return d.rate; });
-
-  x1.domain(valueKeys); //male,female
-  x0.domain(age_group).rangeRoundBands([0, x1.rangeBand()]); // 0: 0-10, 1: 11-20,,etc
-y1Scale.domain([0, d3.max(deathdays, function(d) { return d.deaths+10; })]);
-
-  barchart.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(x1Axis);
-
-  barchart.append("g")
-      .attr("class", "y axis")
-      .style('opacity','0')
-      .call(y1Axis)
-  .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .style('font-weight','bold')
-      .text("Value");
-
-  barchart.select('.y').transition().duration(500).delay(1300).style('opacity','1');
-
-  var slice = barchart.selectAll(".slice")
-      .data(deaths)
-      .enter().append("g")
-      .attr("class", "g")
-      .attr("transform",function(d) { return "translate(" + x0(d.age) + ",0)"; });
-
-  slice.selectAll("rect")
-      .data(function(d,i) { return d.age ; })
-  .enter().append("rect")
-      .attr("width", x1.rangeBand())
-      .attr("x", function(d,i) { return x1(age_group); })
-      .style("fill", function(d) { return color(valueKeys) })
-      .attr("y", function(d) { return y(0); })
-      .attr("height", function(d) { return height - y(0); })
-     .on("mouseover", function(d) {
-          d3.select(this).style("fill", d3.rgb(color(d.rate)).darker(2));
-      })
-      .on("mouseout", function(d) {
-          d3.select(this).style("fill", color(d.rate));
-      });
-
-  slice.selectAll("rect")
-      .transition()
-      .delay(function (d) {return Math.random()*1000;})
-      .duration(1000)
-      .attr("y", function(d) { return y(d.deaths); })
-      .attr("height", function(d) { return height - y(d.deaths); });
-
-  //Legend
-  var legend = barchart.selectAll(".legend")
-      .data(data.values.map(function(d) { return d.rate; }).reverse())
-  .enter().append("g")
-      .attr("class", "legend")
-      .attr("transform", function(d,i) { return "translate(0," + i * 20 + ")"; })
-      .style("opacity","0");
-
-  legend.append("rect")
-      .attr("x", width - 18)
-      .attr("width", 18)
-      .attr("height", 18)
-      .style("fill", function(d) { return color(d); });
-
-  legend.append("text")
-      .attr("x", width - 24)
-      .attr("y", 9)
-      .attr("dy", ".35em")
-      .style("text-anchor", "end")
-      .text(function(d) {return d; });
-
-  legend.transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; }).style("opacity","1");
-
-**/
-
 
