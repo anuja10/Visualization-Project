@@ -13,7 +13,7 @@
 	<body>
 		<header>
 			<h1>London's 1854 Cholera Epidemic Interactive Visualization</h1>
-			<h2>Dr. John Snow's Recreation</h2>
+			<h3 style="text-align: center;">Dr. John Snow's Recreation</h3>
 		</header>
 
 		<!-- Custom JS code -->
@@ -21,6 +21,11 @@
 			.map{
 				size: 400px;
 			}
+			h3 {
+		    text-align: left;
+			font-weight: bold;
+			color: #5387bd;
+		}
 		</style>
 
 		<div id="index">
@@ -32,7 +37,7 @@
 		</div>
 		<div  id="content">
 			<div id="barchart"><h2>Distribution of Deaths by Age and Gender</h2><iframe src ="gender_plot.html" width="660" height="500"></iframe></div>
-			<div id="piechart"><h2>Percentage of Deths in each Age Group</h2><iframe src ="pie_chart.html" width="660" height="500"></iframe></div>
+			<div id="piechart"><h2>Percentage of Deaths in each Age Group</h2><iframe src ="pie_chart.html" width="660" height="500"></iframe></div>
 		</div>
 
 		<div id = 'tabhead'>
@@ -48,17 +53,15 @@
 			<th>Female Deaths</th>
 			<th><svg width="15" height="15"><rect x="0" y="0" width="30" height="30" fill="#0300d1"/></svg></th>
 			<th>Male Deaths</th>
-			<th><svg width="15" height="15"><rect x="0" y="0" width="30" height="30" fill="#3ed100"/></svg></th>
+			<th><svg width="15" height="15"><rect x="0" y="0" width="30" height="30" fill="#8fce00"/></svg></th>
 			<th>Pumps</th>
-			<th><svg width="15" height="15"><rect x="0" y="0" width="30" height="30" stroke ="black" stroke-width="1"  fill="yellow"/></svg></th>
+			<th><svg width="15" height="15"><rect x="0" y="0" width="30" height="30" stroke ="black" stroke-width="1"  fill="#f44336"/></svg></th>
 			<th>Brewery</th>
-			<th><svg width="15" height="15"><rect x="0" y="0" width="30" height="30" stroke ="black" stroke-width="1"  fill="#19484d"/></svg></th>
+			<th><svg width="15" height="15"><rect x="0" y="0" width="30" height="30" stroke ="black" stroke-width="1"  fill="#f6b600"/></svg></th>
 			<th>Workhouse</th>
 		</tr>
-
 		</table>
 		<script src="svg1.js"></script>
-
 		</div>
 	</body>
 </html>
