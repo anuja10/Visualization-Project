@@ -298,10 +298,10 @@ var deaths_to_show = [];
     			.style('fill', function(d){
     				if (d.gender == 0)
     				{
-    			 	return "#e202bc"
+    			 	return "#0300d1"
     				 }
     				else {
-    				 return "#0300d1"
+    				 return "#e202bc"
     				 }})
     			.on("mouseover", function(d,i) {
     				d3.select(this).moveToFront();
@@ -342,10 +342,10 @@ var deaths_to_show = [];
     			.style('fill', function(d){
     				if (d.gender == 0)
     				{
-    			 	return "#e202bc"
+    			 	return "#0300d1"
     				 }
     				else {
-    				 return "#0300d1"
+    				 return "#e202bc"
     				 }})
     			.on("mouseover", function(d,i) {
     				d3.select(this).moveToFront();
@@ -588,4 +588,3 @@ var sum =0;
 
 
 });
-
