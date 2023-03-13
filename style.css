@@ -1,4 +1,4 @@
-/*rect {*/
+rect {
   /* doesn't work in IE */
   transform: rotate(45);
 }
@@ -250,19 +250,7 @@ path {
     stroke-width: 2;
     fill: none;
 }
-/**
-path {
-	stroke: #888;
-	stroke-width: 2;
-	opacity: 0.2;
-	-moz-transition: all 0.1s;
-	-o-transition: all 0.1s;
-	-webkit-transition: all 0.1s;
-	transition: all 0.1s;
-	cursor: pointer;
-	fill: none;
-}
-**/
+
 g.linklight path{
 	stroke: #ff0000;
 	opacity: 1;
