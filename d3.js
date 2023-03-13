@@ -1,4 +1,4 @@
-rect {
+// rect {
   /* doesn't work in IE */
   transform: rotate(45);
 }
